@@ -67,16 +67,56 @@ var Game = {
 
         Pong.menu();
         Pong.listen();
-    }
-};
+    },
 
 
-endGameMenu : function (text) {
 
-    // Change canvas font size and color
+  endGameMenu : function (text) {
 
-    Pong.context.fony = '45px Courier New';
-    Pong.context.fillStyle = this.color;
+     // Change canvas font size and color
+
+     Pong.context.font = '45px Courier New';
+     Pong.context.fillStyle = this.color;
+
+     // Draw the rectanglebehind the  " Press any key to begin "
+
+     Pong.context.fillRect(
+         Pong.cannvas.width /2 -350,
+         Pong.cannvas.height /2 -48,
+         700,
+         100
+     );
+
+     // change the canvas color 
+     Pong.context.fillStyle = '#ffffff';
+
+     // Draw the end game menu text ( "Game Over" and  Winner )
+     Pong.context.fillText(
+         text,
+         Pong.cannvas.width /2 ,
+         Pong.cannvas.height /2 +15
+     );
+
+     setTimeout(function () {
+         Pong =Object.assign({},Game );
+         Pong.initalize();
+     },3000 );
+
+ },
+
+  menu : function(){
+    // Draw all the Pong objects in their current state
+    Pong.draw();
+
+    //Chnage the canvas font size and color 
+    this.cannvas.font = ' 50px Courier New';
+    this.context.fillStyle = this.color ;
+
+    //Draw the retangle behind the " Press any key to begin"
+  }
+
+
+
 
 }
 
